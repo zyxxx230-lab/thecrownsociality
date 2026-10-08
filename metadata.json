@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix The Crown Sociality Minigames",
+  "description": "1v1 Fighting Minigame bertema The Crown Sociality dengan pertarungan taktikal melawan CPU Hard dan kontrol sentuh mobile Android.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

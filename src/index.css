@@ -1,0 +1,565 @@
+@import "tailwindcss";
+
+/* ============================================================
+   VICTORY & SCREEN SHAKE KEYFRAME ANIMATIONS
+   The Crown Sociality Fighting Minigames
+   ============================================================ */
+
+/* 1. WINNING CHARACTER SPRITE KEYFRAME ANIMATIONS */
+
+/* Energetic triumphant victory dance: squash, stretch, high jump, celebratory tilt */
+@keyframes victory-jump-celebration {
+  0% {
+    transform: translateY(0) scale(1, 1) rotate(0deg);
+  }
+  12% {
+    transform: translateY(5px) scale(1.18, 0.82) rotate(0deg); /* Crouch / Squash */
+  }
+  32% {
+    transform: translateY(-34px) scale(0.88, 1.18) rotate(-4deg); /* Big jump upward */
+  }
+  48% {
+    transform: translateY(-38px) scale(1.02, 0.98) rotate(4deg); /* Peak celebration */
+  }
+  65% {
+    transform: translateY(-4px) scale(1.12, 0.9) rotate(-1deg); /* Land */
+  }
+  78% {
+    transform: translateY(-14px) scale(0.96, 1.05) rotate(2deg); /* Rebound hop */
+  }
+  90% {
+    transform: translateY(-2px) scale(1.04, 0.96) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1) rotate(0deg);
+  }
+}
+
+/* Radiant golden champion aura - optimized for low-spec mobile GPUs */
+@keyframes victory-aura-pulse {
+  0%, 100% {
+    filter:
+      drop-shadow(1.5px 0 0 #fef08a)
+      drop-shadow(-1.5px 0 0 #fef08a)
+      drop-shadow(0 1.5px 0 #fef08a)
+      drop-shadow(0 -1.5px 0 #fef08a);
+  }
+  50% {
+    filter:
+      drop-shadow(2px 0 0 #ffffff)
+      drop-shadow(-2px 0 0 #ffffff)
+      drop-shadow(0 2px 0 #ffffff)
+      drop-shadow(0 -2px 0 #ffffff);
+  }
+}
+
+/* Demon King victory aura - optimized for low-spec mobile GPUs */
+@keyframes victory-dark-aura-pulse {
+  0%, 100% {
+    filter:
+      drop-shadow(1.5px 0 0 #c084fc)
+      drop-shadow(-1.5px 0 0 #c084fc)
+      drop-shadow(0 1.5px 0 #c084fc)
+      drop-shadow(0 -1.5px 0 #c084fc);
+  }
+  50% {
+    filter:
+      drop-shadow(2px 0 0 #ffffff)
+      drop-shadow(-2px 0 0 #ffffff)
+      drop-shadow(0 2px 0 #ffffff)
+      drop-shadow(0 -2px 0 #ffffff);
+  }
+}
+
+/* Floating victory crown bob and glint */
+@keyframes victory-crown-bob {
+  0%, 100% {
+    transform: translateY(0) rotate(-6deg) scale(1);
+    filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.8));
+  }
+  50% {
+    transform: translateY(-10px) rotate(6deg) scale(1.15);
+    filter: drop-shadow(0 0 16px rgba(254, 240, 138, 1));
+  }
+}
+
+/* Sparkles rising and shimmering above the winning champion */
+@keyframes victory-sparkle-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.4) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-45px) scale(1.25) rotate(180deg);
+  }
+}
+
+/* Defeated character fall animation */
+@keyframes defeat-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    filter: brightness(1) grayscale(0);
+  }
+  25% {
+    transform: translateY(-12px) rotate(-18deg);
+    filter: brightness(1.6) grayscale(0.2);
+  }
+  60% {
+    transform: translateY(18px) rotate(75deg);
+    filter: brightness(0.7) grayscale(0.7);
+  }
+  100% {
+    transform: translateY(24px) rotate(90deg);
+    filter: brightness(0.45) grayscale(1);
+    opacity: 0.55;
+  }
+}
+
+/* 2. HEAVY ATTACK SCREEN SHAKE KEYFRAME ANIMATIONS (Lightweight & smooth for mobile) */
+
+/* High-impact fighting game camera shake with fast decay - mobile optimized */
+@keyframes screen-shake-heavy {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(-4px, 2px, 0);
+  }
+  40% {
+    transform: translate3d(4px, -2px, 0);
+  }
+  60% {
+    transform: translate3d(-2px, 1px, 0);
+  }
+  80% {
+    transform: translate3d(1px, -1px, 0);
+  }
+}
+
+/* Super heavy special attack camera shake - mobile optimized without rotation blur */
+@keyframes screen-shake-super {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  15% {
+    transform: translate3d(-6px, 4px, 0);
+  }
+  35% {
+    transform: translate3d(6px, -4px, 0);
+  }
+  55% {
+    transform: translate3d(-3px, 2px, 0);
+  }
+  75% {
+    transform: translate3d(2px, -2px, 0);
+  }
+}
+
+/* Heavy attack screen impact flash overlay */
+@keyframes screen-flash-heavy {
+  0% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Expanding radial shockwave on heavy hit contact */
+@keyframes heavy-impact-shockwave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 1;
+    border-width: 8px;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3.2);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+/* ================= UTILITY CLASSES ================= */
+
+.animate-victory-sprite {
+  animation: victory-jump-celebration 1.3s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  transform-origin: bottom center;
+}
+
+.animate-victory-aura {
+  animation: victory-aura-pulse 1.4s ease-in-out infinite;
+}
+
+.animate-victory-dark-aura {
+  animation: victory-dark-aura-pulse 1.4s ease-in-out infinite;
+}
+
+.animate-crown-bob {
+  animation: victory-crown-bob 1.6s ease-in-out infinite;
+}
+
+.animate-sparkle-1 {
+  animation: victory-sparkle-rise 1.5s ease-out infinite;
+}
+
+.animate-sparkle-2 {
+  animation: victory-sparkle-rise 1.5s ease-out infinite 0.5s;
+}
+
+.animate-sparkle-3 {
+  animation: victory-sparkle-rise 1.5s ease-out infinite 1s;
+}
+
+.animate-defeat-fall {
+  animation: defeat-fall 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-origin: bottom center;
+}
+
+.animate-screen-shake-heavy {
+  animation: screen-shake-heavy 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  will-change: transform;
+}
+
+.animate-screen-shake-super {
+  animation: screen-shake-super 0.52s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  will-change: transform;
+}
+
+.animate-impact-flash {
+  animation: screen-flash-heavy 0.28s ease-out forwards;
+}
+
+.animate-shockwave {
+  animation: heavy-impact-shockwave 0.45s ease-out forwards;
+}
+
+/* 3. COMBAT ANIMATIONS: SWORD ATTACK, DEFEND GUARD, AND DEATH COLLAPSE */
+
+/* Sword Slash Arc Effect (Deep Neon Red blade trail) */
+@keyframes sword-slash-arc {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-35deg) translate(-20px, -10px);
+    filter: drop-shadow(0 0 6px #ff0033);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.15) rotate(10deg) translate(0px, 0px);
+    filter: drop-shadow(0 0 18px #ff0033) drop-shadow(0 0 28px rgba(255, 0, 51, 0.9));
+  }
+  70% {
+    opacity: 0.95;
+    transform: scale(1.25) rotate(45deg) translate(15px, 10px);
+    filter: drop-shadow(0 0 26px #ff0033) drop-shadow(0 0 35px rgba(220, 38, 38, 0.9));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35) rotate(65deg) translate(25px, 20px);
+    filter: drop-shadow(0 0 0px transparent);
+  }
+}
+
+.animate-sword-slash {
+  animation: sword-slash-arc 0.28s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+}
+
+/* Enemy Dark Void Slash Arc (Deep Purple blade trail) */
+@keyframes enemy-purple-slash-arc {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(35deg) translate(20px, -10px);
+    filter: drop-shadow(0 0 6px #9333ea);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.15) rotate(-10deg) translate(0px, 0px);
+    filter: drop-shadow(0 0 20px #9333ea) drop-shadow(0 0 30px rgba(147, 51, 234, 0.95));
+  }
+  70% {
+    opacity: 0.95;
+    transform: scale(1.25) rotate(-45deg) translate(-15px, 10px);
+    filter: drop-shadow(0 0 28px #7e22ce) drop-shadow(0 0 38px rgba(126, 34, 206, 0.9));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35) rotate(-65deg) translate(-25px, 20px);
+    filter: drop-shadow(0 0 0px transparent);
+  }
+}
+
+.animate-enemy-slash {
+  animation: enemy-purple-slash-arc 0.28s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+}
+
+/* Sword Parry Sparks & Barrier Shield */
+@keyframes parry-sparks {
+  0% {
+    transform: scale(0.4) rotate(0deg);
+    opacity: 1;
+    filter: brightness(2) drop-shadow(0 0 15px #ff0033);
+  }
+  50% {
+    transform: scale(1.3) rotate(180deg);
+    opacity: 1;
+    filter: brightness(2.5) drop-shadow(0 0 25px #ff1744);
+  }
+  100% {
+    transform: scale(1.6) rotate(360deg);
+    opacity: 0;
+    filter: brightness(1);
+  }
+}
+
+.animate-parry-sparks {
+  animation: parry-sparks 0.32s ease-out forwards;
+}
+
+/* Player Attack Lunge & Slash */
+@keyframes player-attack-motion {
+  0% {
+    transform: translateX(0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateX(18px) scale(1.15, 0.95) rotate(8deg);
+  }
+  50% {
+    transform: translateX(24px) scale(1.18, 0.92) rotate(12deg);
+  }
+  75% {
+    transform: translateX(10px) scale(1.05, 0.98) rotate(4deg);
+  }
+  100% {
+    transform: translateX(0) scale(1) rotate(0deg);
+  }
+}
+
+.animate-player-attack {
+  animation: player-attack-motion 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Player Defend Guard Stance */
+@keyframes player-defend-stance {
+  0% {
+    transform: scale(1) translateX(0);
+  }
+  20% {
+    transform: scale(0.96, 1.04) translateX(-4px);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    transform: scale(0.94, 1.06) translateX(-2px);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 1), inset 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    transform: scale(0.96, 1.04) translateX(0);
+    box-shadow: 0 0 18px rgba(6, 182, 212, 0.7);
+  }
+}
+
+.animate-defend-guard {
+  animation: player-defend-stance 0.4s ease-in-out infinite alternate;
+}
+
+/* Dramatic Player Death Fall & Collapse */
+@keyframes player-death-collapse {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    filter: brightness(1) grayscale(0);
+  }
+  15% {
+    transform: translateY(-16px) rotate(-15deg) scale(1.05);
+    filter: brightness(1.8) drop-shadow(0 0 12px rgba(239, 68, 68, 0.8));
+  }
+  40% {
+    transform: translateY(10px) rotate(45deg) scale(0.95);
+    filter: brightness(0.9) grayscale(0.4);
+  }
+  70% {
+    transform: translateY(22px) rotate(80deg) scale(0.9);
+    filter: brightness(0.6) grayscale(0.85);
+  }
+  100% {
+    transform: translateY(28px) rotate(90deg) scale(0.85);
+    filter: brightness(0.35) grayscale(1);
+    opacity: 0.5;
+  }
+}
+
+.animate-player-death {
+  animation: player-death-collapse 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: bottom center;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animate-screen-shake-heavy,
+  .animate-screen-shake-super {
+    animation: none !important;
+  }
+  .animate-victory-sprite {
+    animation: none !important;
+    transform: translateY(-8px);
+  }
+  .animate-crown-bob {
+    animation: none !important;
+  }
+  .animate-sparkle-1,
+  .animate-sparkle-2,
+  .animate-sparkle-3 {
+    animation: none !important;
+    opacity: 0.5;
+  }
+}
+
+/* ============================================================
+   CHARACTER SILHOUETTE OUTLINES ACCORDING TO PHOTO CONTOURS
+   Transparent character background with exact silhouette stroke
+   ============================================================ */
+
+/* Generic photo silhouette outline helper - lightweight 4-point contour */
+.char-silhouette-contour {
+  filter:
+    drop-shadow(1.5px 0 0 rgba(251, 191, 36, 1))
+    drop-shadow(-1.5px 0 0 rgba(251, 191, 36, 1))
+    drop-shadow(0 1.5px 0 rgba(251, 191, 36, 1))
+    drop-shadow(0 -1.5px 0 rgba(251, 191, 36, 1));
+}
+
+/* Base Player Silhouette Outline: deep neon red contour with vibrant glow */
+.char-outline-player {
+  filter:
+    drop-shadow(2px 0 0 #ff0033)
+    drop-shadow(-2px 0 0 #ff0033)
+    drop-shadow(0 2px 0 #ff0033)
+    drop-shadow(0 -2px 0 #ff0033)
+    drop-shadow(0 0 10px rgba(255, 0, 51, 0.95))
+    drop-shadow(0 0 20px rgba(255, 0, 51, 0.65));
+}
+
+/* Base CPU Silhouette Outline: deep cosmic purple outline contour */
+.char-outline-cpu {
+  filter:
+    drop-shadow(2px 0 0 #9333ea)
+    drop-shadow(-2px 0 0 #9333ea)
+    drop-shadow(0 2px 0 #9333ea)
+    drop-shadow(0 -2px 0 #9333ea)
+    drop-shadow(0 0 10px rgba(147, 51, 234, 0.95))
+    drop-shadow(0 0 20px rgba(126, 34, 206, 0.65));
+}
+
+/* Character Specific Outlines */
+.char-outline-valkyrie {
+  filter:
+    drop-shadow(2px 0 0 #ff0033)
+    drop-shadow(-2px 0 0 #ff0033)
+    drop-shadow(0 2px 0 #ff0033)
+    drop-shadow(0 -2px 0 #ff0033)
+    drop-shadow(0 0 8px rgba(255, 0, 51, 0.8));
+}
+
+.char-outline-crusader {
+  filter:
+    drop-shadow(2px 0 0 #ff0033)
+    drop-shadow(-2px 0 0 #ff0033)
+    drop-shadow(0 2px 0 #ff0033)
+    drop-shadow(0 -2px 0 #ff0033)
+    drop-shadow(0 0 8px rgba(255, 0, 51, 0.8));
+}
+
+.char-outline-ignis {
+  filter:
+    drop-shadow(2px 0 0 #ff0033)
+    drop-shadow(-2px 0 0 #ff0033)
+    drop-shadow(0 2px 0 #ff0033)
+    drop-shadow(0 -2px 0 #ff0033)
+    drop-shadow(0 0 8px rgba(255, 0, 51, 0.8));
+}
+
+/* Defending / Parry Guard: deep neon red energy barrier contour */
+.char-outline-defend {
+  filter:
+    drop-shadow(2.5px 0 0 #ff0033)
+    drop-shadow(-2.5px 0 0 #ff0033)
+    drop-shadow(0 2.5px 0 #ff0033)
+    drop-shadow(0 -2.5px 0 #ff0033)
+    drop-shadow(0 0 14px rgba(255, 0, 51, 1));
+}
+
+/* CPU Defending: deep royal purple barrier contour */
+.char-outline-cpu-defend {
+  filter:
+    drop-shadow(2.5px 0 0 #9333ea)
+    drop-shadow(-2.5px 0 0 #9333ea)
+    drop-shadow(0 2.5px 0 #9333ea)
+    drop-shadow(0 -2.5px 0 #9333ea)
+    drop-shadow(0 0 14px rgba(147, 51, 234, 1));
+}
+
+/* Quick Attack: deep neon red blade slash contour */
+.char-outline-attack {
+  filter:
+    drop-shadow(2.5px 0 0 #ff0033)
+    drop-shadow(-2.5px 0 0 #ff1744)
+    drop-shadow(0 2.5px 0 #ff0033)
+    drop-shadow(0 -2.5px 0 #ff1744)
+    drop-shadow(0 0 12px rgba(255, 0, 51, 0.95));
+}
+
+/* Heavy Attack: blazing deep neon red contour */
+.char-outline-heavy {
+  filter:
+    drop-shadow(3px 0 0 #ff0033)
+    drop-shadow(-3px 0 0 #ff0033)
+    drop-shadow(0 3px 0 #dc2626)
+    drop-shadow(0 -3px 0 #dc2626)
+    drop-shadow(0 0 16px rgba(255, 0, 51, 1));
+}
+
+/* Special Skill: radiant deep neon red divine surge contour */
+.char-outline-special {
+  filter:
+    drop-shadow(3px 0 0 #ffffff)
+    drop-shadow(-3px 0 0 #ff0033)
+    drop-shadow(0 3px 0 #ff0033)
+    drop-shadow(0 -3px 0 #ffffff)
+    drop-shadow(0 0 18px rgba(255, 0, 51, 1));
+}
+
+/* CPU Special: deep purple void eruption contour */
+.char-outline-cpu-special {
+  filter:
+    drop-shadow(3px 0 0 #ffffff)
+    drop-shadow(-3px 0 0 #9333ea)
+    drop-shadow(0 3px 0 #7e22ce)
+    drop-shadow(0 -3px 0 #ffffff)
+    drop-shadow(0 0 18px rgba(147, 51, 234, 1));
+}
+
+/* Hurt / Recoil: red impact flash contour */
+.char-outline-hurt {
+  filter:
+    drop-shadow(2px 0 0 #ef4444)
+    drop-shadow(-2px 0 0 #ef4444)
+    drop-shadow(0 2px 0 #ef4444)
+    drop-shadow(0 -2px 0 #ef4444);
+}
+
+/* Checkerboard background for transparent PNG preview in editor */
+.bg-transparency-grid {
+  background-color: #121212;
+  background-image: 
+    linear-gradient(45deg, #1c1c1c 25%, transparent 25%),
+    linear-gradient(-45deg, #1c1c1c 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #1c1c1c 75%),
+    linear-gradient(-45deg, transparent 75%, #1c1c1c 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+
